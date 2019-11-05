@@ -15,7 +15,7 @@ Run in debug mode
 $ export DEBUT=1
 ```
 
-Then: ```FLASK_APP="src:create_app('Development')" flask run```
+Then: ```$ FLASK_APP="src:create_app('Development')" flask run```
 
 ### Shell Context
 ```bash
