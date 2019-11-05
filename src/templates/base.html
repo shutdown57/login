@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% comment %} Base layout {% endcomment %}
+<html lang="en">
+  {% include '_flashmessages.html' %}
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- FontAwesome -->
+    <link
+      href="{{ url_for('static', filename='css/font-awesome.min.css') }}"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap -->
+    <link
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Theme -->
+    <link
+      href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}"
+      rel="stylesheet"
+    />
+    {% block css %}
+    <!-- Default load main.css -->
+    <link
+      href="{{ url_for('static', filename='css/main.css') }}"
+      rel="stylesheet"
+    />
+    {% endblock %}
+  </head>
+
+  <body>
+    <div class="container">
+      {% block content %}{% endblock %}
+
+      <div id="footer" class="col-md-offset-3 col-md-6 bg-footer">
+        <hr />
+        <footer>
+          &copy; Copyright 2019
+        </footer>
+      </div>
+    </div>
+
+    <!-- jQuery for Bootstrap -->
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <!-- Popper for Bootstrap -->
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script>
+      $(document).ready(function() {
+        var docHeight = $(window).height()
+        var footerHeight = $('#footer').height()
+        var footerTop = $('#footer').position().top + footerHeight
+        if (footerTop < docHeight) {
+          $('#footer').css('margin-top', 10 + (docHeight - footerTop) + 'px')
+        }
+      })
+    </script>
+  </body>
+</html>
